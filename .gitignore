@@ -1,0 +1,6 @@
+config.toml
+.env
+.DS_Store
+.venv
+__pycache__/
+*.pyc
