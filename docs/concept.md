@@ -1,0 +1,2 @@
+concept (wip):
+- A ideia da arch (em runtime) é que a requisição seja na camada api e logo depois delegem para casos de usos (application) que alteram a entidade ultilizando banco de dados. A configuração sendo algo a parte através de loaders e um builder que o composition root organiza para o uso da aplicação
