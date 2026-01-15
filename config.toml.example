@@ -1,0 +1,116 @@
+# ==============================================================================
+# PET CONFIGURATION
+# ==============================================================================
+
+# ---------------------
+# CHARACTER METADATA
+# ---------------------
+
+[character]
+name = "Pet"
+full_name = "Custom Pet Simulator"
+age = 5
+description = "A customizable pet driven by TOML logic."
+
+# ---------------------
+# BASE STATS
+# Define initial values and constraints
+# ---------------------
+
+[stats]
+hunger    = { initial = 50,  min = 0, max = "inf" }
+happiness = { initial = 50,  min = 0, max = 100 }
+energy    = { initial = 50,  min = 0, max = 100 }
+health    = { initial = 100, min = 0, max = 100 }
+existence = { initial = 0,   min = 0, max = 999 }
+
+# ---------------------
+# ACTIONS
+# ---------------------
+
+[actions.feed]
+display_name = "Feed"
+cooldown = 30
+
+    [actions.feed.effects]
+    hunger = -20
+    happiness = 10
+    energy = 2
+
+    [actions.feed.messages]
+    success = "The pet ate!"
+    fail = "The action could not be executed."
+
+# ---------------------
+
+[actions.sleep]
+display_name = "Sleep"
+cooldown = 60
+
+    [actions.sleep.requirements]
+    energy = "<40"
+
+    [actions.sleep.effects]
+    energy = 30
+    hunger = 10
+
+    [actions.sleep.messages]
+    success = "The pet rested."
+    fail = "The pet is not tired."
+
+# ---------------------
+
+[actions.play]
+display_name = "Play"
+cooldown = 20
+
+    [actions.play.effects]
+    happiness = 20
+    energy = -15
+    hunger = 5
+
+    [actions.play.messages]
+    success = "The pet had fun!"
+
+# -----------------------
+
+[actions.touch_grass]
+display_name = "Touch Grass"
+cooldown = 5
+
+    [actions.touch_grass.requirements]
+    happiness = "<100"
+
+    [actions.touch_grass.effects]
+    existence = 1
+
+    # External hooks (Perfect for Linux integration!)
+    [actions.touch_grass.hooks]
+    on_success = "notify-send 'Pet Status' 'Hey! Your pet touched grass!'"
+    on_fail    = "notify-send 'Pet Status' 'Your pet is playing League of Legends and cannot touch grass...'"
+
+    [actions.touch_grass.messages]
+    success = "The pet touched grass and feels more alive."
+    fail = "The pet is playing League of Legends and cannot touch grass."
+
+# -----------------------
+
+[actions.observe]
+display_name = "Observe"
+cooldown = 5
+
+    [actions.observe.messages]
+    success = "You observed the pet existing."
+
+# -----------------------
+
+[actions.exist]
+display_name = "Exist"
+cooldown = 0
+
+    [actions.exist.effects]
+    existence = 1
+
+    [actions.exist.messages]
+    success = "The pet continues to exist."
+    fail = "The pet failed to exist."
