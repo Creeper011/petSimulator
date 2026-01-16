@@ -1,5 +1,6 @@
 """Unit tests for the TOML configuration loader."""
 
+# pylint: disable=wrong-import-order
 import pytest
 from tomllib import TOMLDecodeError
 from unittest.mock import MagicMock, patch
