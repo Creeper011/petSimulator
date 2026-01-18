@@ -84,7 +84,6 @@ cooldown = 5
     [actions.touch_grass.effects]
     existence = 1
 
-    # External hooks (Perfect for Linux integration!)
     [actions.touch_grass.hooks]
     on_success = "notify-send 'Pet Status' 'Hey! Your pet touched grass!'"
     on_fail    = "notify-send 'Pet Status' 'Your pet is playing League of Legends and cannot touch grass...'"

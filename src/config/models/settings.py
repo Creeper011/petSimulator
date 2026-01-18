@@ -1,9 +1,9 @@
 """Configuration model for the application settings."""
 
 from dataclasses import dataclass
-from typing import Any, Dict
+from src.models.entities.pet import Character
 
-@dataclass
+@dataclass(frozen=True)
 class ApplicationSettings():
     """Dataclass representing application settings."""
-    pet_actions: Dict[str, Dict[str, Any]]
+    pet_character: Character

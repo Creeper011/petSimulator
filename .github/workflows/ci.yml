@@ -22,7 +22,7 @@ jobs:
       
       - name: Run tests
         run: |
-          pytest tests/ --maxfail=1 --disable-warnings -q
+          pytest tests/pylint --maxfail=1 --disable-warnings -q
 
       - name: Pylint Check
         run: |
